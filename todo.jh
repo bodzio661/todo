@@ -1,38 +1,15 @@
-entity Faktura {
-	numerFaktury String required,
-	kwotaFaktury Float required,
-    dataFaktury LocalDate required,
-    typFaktury Type required,
-    statusFaktury Status required
-    zalegloscFaktury Zaleglosc
+entity Todo {
+	id Long required,
+    description String required,
+    username String required,
+    date Date required,
+    isDone Bool required
 }
 
-entity Kontrachent {
-	nazwaKontrachenta String,
-	emailKontrachenta String,
-	numerKontrachenta String,
-	terminKontrachenta Integer,
-}
-
-enum Type {
-    Kosztowa, Przychodowa
-}
-
-enum Zaleglosc {
-    OK, Zalegla
-}
-
-enum Status {
-    Zaplacone, Nowe
-}
-
-relationship OneToMany {
-	Kontrachent{faktura} to Faktura{kontrachent}
-}
 
 // Set pagination options
-paginate Faktura, Kontrachent with infinite-scroll
-paginate Faktura, Kontrachent with pagination
+paginate Todo with infinite-scroll
+paginate Todo with pagination
 
 // Use Data Transfert Objects (DTO)
 // dto * with mapstruct
